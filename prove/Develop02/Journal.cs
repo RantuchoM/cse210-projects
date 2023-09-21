@@ -19,6 +19,7 @@ public class Journal
             _entry.Display();
         }
     }
+    
     public void SaveToFile(string filePath){
         // Create or overwrite the file and write CSV lines
         File.WriteAllText(filePath, "Date,PromptText,EntryText\n"); // Write the header row
@@ -32,6 +33,7 @@ public class Journal
         }
         Console.WriteLine($"Journal saved successfully at {filePath}");
            }
+
     public void LoadFromFile(string filePath){
         string[] entries = File.ReadAllLines(filePath);
         for (int i = 1; i < entries.Length; i++) // i=1 is for skipping headers
@@ -53,6 +55,7 @@ public class Journal
         }
         Console.WriteLine($"{_entries.Count} notes were loaded from {filePath}.");
     }
+
     public void EditLastEntry(){
         Entry entry = _entries[_entries.Count -1];
         entry.Display();
@@ -60,7 +63,6 @@ public class Journal
         entry._entryText = Console.ReadLine();
         Console.WriteLine("Your text has been modified.");
     }
-
 
     private string CommasToSymbol(string str)
     {

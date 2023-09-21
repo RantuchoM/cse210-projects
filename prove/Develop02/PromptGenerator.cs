@@ -22,13 +22,12 @@ public class PromptGenerator{
 
         // Create a Random instance
         Random random = new Random();
-
         // Generate a random index within the range of valid indices
         int randomIndex = random.Next(0, _prompts.Count);
-
         // Get the random prompt from the list
         string randomPrompt = _prompts[randomIndex];
         //Console.WriteLine(randomPrompt);
+        
         return randomPrompt;
     }
 }

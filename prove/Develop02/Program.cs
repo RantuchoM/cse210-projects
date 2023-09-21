@@ -13,6 +13,7 @@ class Program
             Console.WriteLine("\nPlease select one of the following choices:");
             Console.WriteLine("1.Write \n2.Display \n3.Load \n4.Save \n5.Edit Last Entry \n6.Quit");
             answer = Console.ReadLine();
+            
             if(answer  == "1"){
                 journal.AddEntry();
             }
