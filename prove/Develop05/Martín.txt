@@ -1,0 +1,4 @@
+460
+Simple Goal|Name1|Description1|10|0
+Eternal Goal|Name2|Description2|30
+Checklist Goal|One checklist|This|40|5|200|5

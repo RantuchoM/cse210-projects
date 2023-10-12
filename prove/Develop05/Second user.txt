@@ -1,0 +1,3 @@
+50
+Simple Goal|New goal|Description|40|0
+Eternal Goal|Eternal|sdlfkj|50
