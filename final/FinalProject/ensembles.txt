@@ -1,0 +1,15 @@
+1♪CAV♪Cuerdas del Alto Valle♪1♫2♫3♫21♫26♫33♪Valle
+2♪EnsVal♪Ensamble del Valle♪1♫2♫3♫4♫5♫6♫21♫22♫26♫27♫33♫37♫40♫43♫45♫47♫48♫50♫51♫53♫54♫58♫59♫60♪Valle
+3♪CamFil♪Camerata Filarmónica♪3♫6♫7♫10♫11♫12♫15♫16♫18♫21♫23♫24♫26♫29♫31♫33♪Valle|Mar|Montaña
+4♪CPAT♪Cuerdas Patagónicas♪4♫5♫6♫22♫27♪Valle
+5♪ECAS♪Ensamble de Cuerdas del Atlántico Sur♪7♫8♫9♫10♫11♫12♫23♫28♫29♫34♪Mar
+6♪EnsMar♪Ensamble del Mar♪7♫8♫9♫10♫11♫12♫23♫28♫29♫34♫38♫39♫41♫44♫46♫49♫52♫55♫57♪Mar
+7♪ES♪Ensamble Sur♪13♫14♫15♫16♫24♫30♫35♪Montaña
+8♪EnsMon♪Ensamble de la Montaña♪13♫14♫15♫16♫17♫18♫19♫20♫24♫25♫30♫31♫32♫35♫36♫42♫56♪Montaña
+9♪PILTRI♪Quinteto Piltri♪17♫18♫31♫36♪Montaña
+10♪VN♪Ventisquero Negro♪19♫20♫25♫32♪Montaña
+11♪PV♪Perla del Valle♪37♫40♫43♫45♫50♪Valle
+12♪VS♪Viento Sur♪38♫39♫41♫44♫46♫49♪Mar
+13♪ABRON♪Alto Bronce♪47♫48♫51♫54♪Valle
+14♪BRAT♪Bronces del Atlántico♪49♫52♫55♫57♪Mar
+15♪TREPUN♪Trepun♪58♫59♫60♪Valle
