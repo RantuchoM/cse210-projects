@@ -6,19 +6,22 @@ class Program
     private static List<Instrument> instruments = new();
     private static List<Person> people = new();
     private static List<Ensemble> ensembles = new();
+    private static List<Rehearsal> rehearsals = new();
     private static List<Concert> concerts = new();
+
     static void Main(string[] args)
     {
        LoadInstruments();
        LoadPeople();
        LoadEnsembles();
+       LoadRehearsals();
        LoadConcerts();
        
-       AgendaManager agendaManager = new(people,instruments,ensembles,concerts);
+       AgendaManager agendaManager = new(people,instruments,ensembles,rehearsals,concerts);
        agendaManager.Run();
        
     }
-
+    
     static void LoadInstruments()
     {
         string filename = "instruments.txt";
@@ -93,6 +96,45 @@ class Program
                                       
             }
     }
+   static void LoadRehearsals()
+    {
+        string filename = "rehearsals.txt";
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        foreach (string rehearsalData in lines)
+        {
+            List<string> rehearsalSplit = rehearsalData.Split("♪").ToList();
+            
+            DateTime rehearsalDate = ParseDateTime(rehearsalSplit[0]);
+            string location = ToTitle(rehearsalSplit[1]);
+            string conductor = ToTitle(rehearsalSplit[2]);
+            string observations = rehearsalSplit[3];
+            int id = int.Parse(rehearsalSplit[4]);
+            string type = rehearsalSplit[5];
+
+            switch (type)
+            {
+                case "Ensemble":
+                    string ensembleIdString = rehearsalSplit[6];
+                    Ensemble ensemble = ensembles.Find(e => e.GetId() == int.Parse(ensembleIdString));
+                    EnsembleRehearsal ensembleRehearsal = new(id, rehearsalDate, location, conductor, observations, ensemble);
+                    rehearsals.Add(ensembleRehearsal);
+                    break;
+                case "General":
+                    string ensemblesString = rehearsalSplit[6];
+                    List<int> ensembleIds = ensemblesString.Split('♫').Select(int.Parse).ToList();
+                    List<Ensemble> ensembleList = ensembleIds.Select(ensembleId => ensembles.Find(e => e.GetId() == ensembleId)).ToList();
+                    GeneralRehearsal generalRehearsal = new(id, rehearsalDate, location, conductor, observations, ensembleList);
+                    rehearsals.Add(generalRehearsal);
+                    break;
+                default:
+                    Console.WriteLine("Invalid rehearsal type. Please enter a valid type.");
+                    break;
+            }
+        }
+    }
+
+
     static void LoadConcerts()
     {
         string filename = "concerts.txt";
@@ -108,16 +150,19 @@ class Program
                     string location = ToTitle(concertSplit[2]);
                     string conductor = ToTitle(concertSplit[3]);
                     string description = concertSplit[4];
-                    string type = concertSplit[5];
+                    string rehearsalsIds = concertSplit[5];
+                    string type = concertSplit[6];
                     switch (type)
                     {
                         case "Symphonic":
-                            string title = concertSplit[6];
+                            string title = concertSplit[7];
                             SymphonicConcert symphonic = new(id,concertDate,location,conductor,description,title);
                             concerts.Add(symphonic);
+                            AddRehearsalsToConcert(symphonic,rehearsalsIds);
+
                             break;
                         case "Regional":
-                            string ensemblesConcert = concertSplit[6];
+                            string ensemblesConcert = concertSplit[7];
                             List<string> ensemblesSplit = ensemblesConcert.Split("♫").ToList();
                             List<Ensemble> ensemblesList = new();
                             foreach (string thisId in ensemblesSplit)
@@ -131,25 +176,37 @@ class Program
                                 regional.AddEnsemble(ensemble);
                             }
                             concerts.Add(regional);
+                            AddRehearsalsToConcert(regional,rehearsalsIds);
 
                             break;
                         case "Ensemble":
-                            string idString = concertSplit[6];
+                            string idString = concertSplit[7];
                             Ensemble thisEnsemble = ensembles.Find(ensembleId => ensembleId.GetId() == int.Parse(idString));
                             EnsembleConcert ensembleConcert = new(id,concertDate,location,conductor,description,thisEnsemble);
                             concerts.Add(ensembleConcert);
+                            AddRehearsalsToConcert(ensembleConcert,rehearsalsIds);
                             break;
                         default:
                             Console.WriteLine("Invalid choice. Please enter a valid option.");
                             break;
                     }
-                    
-                    
-                    
-                    
-                    
-                                      
+                                                          
             }
+    }
+    static void AddRehearsalsToConcert(Concert concert,string rehearsalsString)
+    {
+        Console.WriteLine(rehearsalsString);
+        if(rehearsalsString != "")
+        {
+            List<string> rehearsalsIds = rehearsalsString.Split("♫").ToList();
+    
+            foreach(string id in rehearsalsIds)
+            {
+                int rehearsalId = int.Parse(id);
+                Rehearsal matchedRehearsal = rehearsals.Find(rehearsal => rehearsal.GetId() == rehearsalId);
+                concert.AddRehearsal(matchedRehearsal);
+            }
+        }
     }
     static DateTime ParseDateTime(string input)
     {

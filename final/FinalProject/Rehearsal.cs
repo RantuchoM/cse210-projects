@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 
 public abstract class Rehearsal: AnyEvent
 {
-    private string _observations;
+    protected string _observations;
     private int _id;
     
     public Rehearsal(DateTime date, string location, string conductor, string observations) : base(date,location,conductor)
@@ -16,5 +16,15 @@ public abstract class Rehearsal: AnyEvent
         _observations = observations;
         _id = id;
     }
+    public virtual string GetRehearsalString()
+    {
+        string repr = $"{_dateTime}♪{_location}♪{_conductor}♪{_observations}♪{_id}";
+        return repr;
+    }
+    public int GetId()
+    {
+        return _id;
+    }
+
         
 }

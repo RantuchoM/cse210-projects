@@ -15,7 +15,12 @@ public class EnsembleRehearsal : Rehearsal
     }
     public override string GetEventDetails()
     {
-        string details = "";
-        return details;
+        
+        return $"Ensemble Rehearsal: {_dateTime.ToString("dd MMM yyyy HH:mm")} at {_location}. Conductor: {_conductor}. Observations: {_observations}. Ensemble: {_ensemble}";
+    }
+    public override string GetRehearsalString()
+    {
+        
+        return $"{base.GetRehearsalString()}♪Ensemble♪{_ensemble.GetId()}";
     }
 }

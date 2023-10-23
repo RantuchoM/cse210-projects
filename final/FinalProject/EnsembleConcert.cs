@@ -12,7 +12,7 @@ public class EnsembleConcert : Concert
     public override string GetEventDetails()
     {
         
-        return $"Ensemble Concert: {_dateTime}: {_location}. Conductor: {_conductor}. Ensemble: {_ensemble}";
+        return $"Ensemble Concert: {_dateTime.ToString("dd MMM yyyy HH:mm")} at {_location}. Conductor: {_conductor}. Ensemble: {_ensemble}";
     }
     public void SetEnsemble(Ensemble ensemble)
     {

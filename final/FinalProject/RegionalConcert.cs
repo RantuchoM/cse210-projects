@@ -13,7 +13,7 @@ public class RegionalConcert : Concert
     public override string GetEventDetails()
     {
         string ensembles = string.Join(", ", _ensembles.Select(x => x.GetName()));
-        return $"Regional Concert: {_dateTime}: {_location}. Conductor: {_conductor}. Ensembles: {ensembles}";
+        return $"Regional Concert: {_dateTime.ToString("dd MMM yyyy HH:mm")} at {_location}. Conductor: {_conductor}. Ensembles: {ensembles}";
     }
     public void AddEnsemble(Ensemble ensemble)
     {

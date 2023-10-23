@@ -22,6 +22,18 @@ public abstract class AnyEvent
     {
         return _dateTime;
     }
+    public void SetTime(DateTime dateTime)
+    {
+        _dateTime = dateTime;
+    }
+    public void SetLocation (string location)
+    {
+        _location = location;
+    }
+    public void SetConductor (string conductor)
+    {
+        _conductor = conductor;
+    }
     public abstract string GetEventDetails();
 
 }

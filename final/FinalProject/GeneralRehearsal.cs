@@ -15,7 +15,13 @@ public class GeneralRehearsal : Rehearsal
     }
     public override string GetEventDetails()
     {
-        string details = "";
-        return details;
+        string ensembles = string.Join(", ",_ensembles.Select(x => x.GetName()));
+        return $"General Rehearsal: {_dateTime.ToString("dd MMM yyyy HH:mm")} at {_location}. Conductor: {_conductor}. Observations: {_observations}. Ensembles: {ensembles}";
+    }
+    public override string GetRehearsalString()
+    {
+
+        string ensembles = string.Join("♫",_ensembles.Select(x => x.GetId()));
+        return $"{base.GetRehearsalString()}♪General♪{ensembles}";
     }
 }

@@ -11,7 +11,7 @@ public class SymphonicConcert : Concert
     }
     public override string GetEventDetails()
     {
-        return $"Symphonic Concert: {_dateTime}: {_location}. Conductor: {_conductor}.";
+        return $"Symphonic Concert: {_dateTime.ToString("dd MMM yyyy HH:mm")} at {_location}. Conductor: {_conductor}.";
     }
     public override string GetString()
     {
