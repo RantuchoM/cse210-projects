@@ -27,8 +27,21 @@ public class AgendaManager
 
     public void Run()
     {
+        bool firstTime = true;
         while (true)
-        {
+        {   
+            if(!firstTime)
+            {
+                Console.WriteLine("Press <Enter> to go back to the Menu");
+                Console.ReadLine();
+                
+            }
+            firstTime = false;
+            Console.Clear();
+            Console.WriteLine("*****************************************************");
+            Console.WriteLine($"                       MENU ");
+            Console.WriteLine("*****************************************************");
+            Console.WriteLine("");
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine("1. Create a Concert");
             Console.WriteLine("2. Create a Rehearsal");
@@ -65,7 +78,6 @@ public class AgendaManager
             }
         }
     }
-
     public void HandleAnyEvent(List<AnyEvent> events)
     {
         Console.WriteLine("Do you want to modify or delete an event? (y/n)");
@@ -176,6 +188,11 @@ public class AgendaManager
     {
         while (true)
         {
+            Console.WriteLine("");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("      Create a Rehearsal ");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("");
             Console.WriteLine("Which kind of rehearsal would you like to create?");
             Console.WriteLine("1. Ensemble Rehearsal");
             Console.WriteLine("2. Regional Rehearsal");
@@ -232,6 +249,11 @@ public class AgendaManager
     {
         while (true)
         {
+            Console.WriteLine("");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("     Create a Concert ");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("");
             Console.WriteLine("Which kind of concert would you like to create?");
             Console.WriteLine("1. Symphonic Concert");
             Console.WriteLine("2. Regional Concert");
